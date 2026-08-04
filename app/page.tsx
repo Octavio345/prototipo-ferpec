@@ -71,7 +71,7 @@ const categories = [
 const suppliers = [
   { src: "/brand/galmar.png", name: "Galmar" },
   { src: "/brand/lupus-transparent.png", name: "Lupus" },
-  { src: "/brand/bremen-transparent.png", name: "Bremen" },
+  { src: "/brand/bremen-transparent-v2.png", name: "Bremen" },
   { src: "/brand/digimess-transparent.png", name: "Digimess" },
   { src: "/brand/balmak-transparent.png", name: "Balmak" },
   { src: "/brand/tramontina.svg", name: "Tramontina" },
