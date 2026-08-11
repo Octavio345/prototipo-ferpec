@@ -24,13 +24,21 @@ import {
 } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
+const whatsappMessage = encodeURIComponent(
+  "Olá! Vim pelo site da Ferpec Commerce e gostaria de atendimento para encontrar o produto ideal.",
+);
+const gmailSubject = encodeURIComponent("Contato pelo site da Ferpec Commerce");
+const gmailBody = encodeURIComponent(
+  "Olá, equipe Ferpec Commerce! Vim pelo site e gostaria de mais informações.",
+);
+
 const links = {
-  whatsapp:
-    "https://wa.me/5519983524481?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Ferpec%20Commerce%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.",
+  whatsapp: `https://wa.me/5519983524481?text=${whatsappMessage}`,
   instagram: "https://www.instagram.com/ferpeccommerce/",
   facebook: "https://www.facebook.com/ferpeccommerce/",
   magalu: "https://www.magazineluiza.com.br/lojista/ferpeccommerce/",
-  mercadoLivre: "https://lista.mercadolivre.com.br/ferpec",
+  mercadoLivre: "https://www.mercadolivre.com.br/pagina/ferpecferramentas",
+  gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=ferpec%40ferpec.com.br&su=${gmailSubject}&body=${gmailBody}`,
 };
 
 const categories = [
@@ -47,8 +55,8 @@ const categories = [
     icon: Sprout,
     image: "/media/category-garden.jpg",
     title: "Jardinagem",
-    text: "Ferramentas funcionais para cuidar, organizar e transformar jardins e áreas externas.",
-    tags: ["Jardim", "Organização", "Uso diário"],
+    text: "Ferramentas e suportes para vasos que unem praticidade, organização e cuidado em jardins e áreas externas.",
+    tags: ["Ferramentas", "Suportes para vasos", "Jardim"],
   },
   {
     number: "03",
@@ -61,10 +69,10 @@ const categories = [
   {
     number: "04",
     icon: Scale,
-    image: "/media/category-scale.jpg",
-    title: "Balanças",
-    text: "Soluções de pesagem para food service, varejo, indústria, saúde, fitness e uso veterinário.",
-    tags: ["Precisão", "Comercial", "Industrial"],
+    image: "/media/category-anthropometric.webp",
+    title: "Balanças e equipamentos antropométricos",
+    text: "Soluções para pesagem e avaliação antropométrica, com equipamentos selecionados para medições precisas.",
+    tags: ["Pesagem", "Antropometria", "Precisão"],
   },
 ];
 
@@ -131,7 +139,7 @@ export default function Home() {
     <main>
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="nav-shell">
-          <BrandLogo />
+          <div className="nav-brand-group"><BrandLogo /><span className="brand-divider" /><span className="brand-tag">COMMERCE<small>VENDA ONLINE</small></span></div>
           <nav className="desktop-nav" aria-label="Navegação principal">
             <a href="#sobre">Sobre</a>
             <a href="#categorias">Categorias</a>
@@ -139,8 +147,8 @@ export default function Home() {
             <a href="#fornecedores">Marcas</a>
             <a href="#contato">Contato</a>
           </nav>
-          <a className="nav-cta desktop-cta" href={links.whatsapp} target="_blank" rel="noreferrer">
-            <FaWhatsapp size={17} /> Fale no WhatsApp
+          <a className="nav-cta desktop-cta" href={links.whatsapp} target="_blank" rel="noreferrer" aria-label="Falar com a Ferpec pelo WhatsApp" title="WhatsApp Ferpec">
+            <FaWhatsapp />
           </a>
           <button className="menu-toggle" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}>
             {menuOpen ? <X /> : <Menu />}
@@ -169,7 +177,7 @@ export default function Home() {
             <div className="eyebrow hero-eyebrow"><span className="eyebrow-dot" /> E-commerce especializado em ferramentas</div>
             <h1>As ferramentas certas, <span>a um clique de você.</span></h1>
             <p>
-              A Ferpec Commerce seleciona e vende online ferramentas para motocicletas, jardinagem, uso geral e soluções de pesagem de marcas confiáveis.
+              A Ferpec Commerce seleciona e vende online ferramentas para motocicletas, jardinagem, uso geral, balanças e equipamentos antropométricos de marcas confiáveis.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#onde-comprar">Comprar online <ShoppingBag size={18} /></a>
@@ -196,7 +204,7 @@ export default function Home() {
       <section className="value-strip" aria-label="Diferenciais Ferpec">
         <div className="container value-grid">
           <div><ShieldCheck /><span><strong>Marcas confiáveis</strong>Curadoria de fornecedores</span></div>
-          <div><PackageCheck /><span><strong>Compra segura</strong>Nos maiores marketplaces</span></div>
+          <div><PackageCheck /><span><strong>Enviamos para todo o Brasil</strong>Compre pelos canais oficiais</span></div>
           <div><FaWhatsapp /><span><strong>Atendimento próximo</strong>Fale direto com a equipe</span></div>
           <div><Gauge /><span><strong>Soluções profissionais</strong>Para diferentes rotinas</span></div>
         </div>
@@ -230,8 +238,8 @@ export default function Home() {
           {categories.map((category, index) => {
             const Icon = category.icon;
             return (
-              <Reveal key={category.title} className="category-card" delay={index * 80}>
-                <div className="category-photo"><img src={category.image} alt={`Ferramentas para ${category.title.toLowerCase()}`} loading="lazy" /><div className="category-top"><span>{category.number}</span><Icon /></div></div>
+              <Reveal key={category.title} className={`category-card ${category.number === "04" ? "category-scale-card" : ""}`} delay={index * 80}>
+                <div className="category-photo"><img src={category.image} alt={category.number === "04" ? "Balança antropométrica com estadiômetro" : `Produtos para ${category.title.toLowerCase()}`} loading="lazy" /><div className="category-top"><span>{category.number}</span><Icon /></div></div>
                 <div className="category-copy"><h3>{category.title}</h3><p>{category.text}</p><div className="category-tags">{category.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
                 <a href={links.whatsapp} target="_blank" rel="noreferrer" aria-label={`Consultar produtos de ${category.title}`}>Consultar produtos <ChevronRight size={18} /></a>
               </Reveal>
@@ -242,7 +250,7 @@ export default function Home() {
 
       <section id="onde-comprar" className="marketplaces section-pad">
         <div className="container market-layout">
-          <Reveal className="market-copy"><span className="section-kicker">03 — Onde comprar</span><h2>Canais oficiais.<br /><em>Compra com confiança.</em></h2><p>Encontre os produtos Ferpec nos principais marketplaces, com pagamento protegido e entrega para todo o Brasil.</p><div className="market-checks"><span><Check size={16} /> Pagamento seguro</span><span><Check size={16} /> Entrega para todo o Brasil</span><span><Check size={16} /> Canais oficiais Ferpec</span></div></Reveal>
+          <Reveal className="market-copy"><span className="section-kicker">03 — Onde comprar</span><h2>Canais oficiais.<br /><em>Compra com confiança.</em></h2><p>Encontre os produtos Ferpec nos principais marketplaces, com pagamento protegido. Enviamos para todo o Brasil.</p><div className="market-checks"><span><Check size={16} /> Pagamento seguro</span><span><Check size={16} /> Enviamos para todo o Brasil</span><span><Check size={16} /> Canais oficiais Ferpec</span></div></Reveal>
           <div className="market-cards">
             <Reveal className="market-card market-ml" delay={100}><div className="market-logo"><img src="/logos/mercado-livre.svg" alt="Mercado Livre" /></div><span className="market-overline">COMPRE NO MERCADO LIVRE</span><h3>Agilidade para escolher e receber.</h3><p>Acesse o catálogo Ferpec disponível na plataforma.</p><a href={links.mercadoLivre} target="_blank" rel="noreferrer">Visitar loja <ArrowRight size={17} /></a></Reveal>
             <Reveal className="market-card market-magalu" delay={180}><div className="market-logo"><img src="/logos/magalu.svg" alt="Magalu" /></div><span className="market-overline">COMPRE NO MAGALU</span><h3>Praticidade em uma plataforma conhecida.</h3><p>Confira a seleção Ferpec disponível no Magazine Luiza.</p><a href={links.magalu} target="_blank" rel="noreferrer">Visitar loja <ArrowRight size={17} /></a></Reveal>
@@ -271,21 +279,24 @@ export default function Home() {
         <div className="contact-grid-bg" aria-hidden="true" />
         <div className="container contact-layout">
           <Reveal className="contact-copy"><span className="section-kicker section-kicker-light">06 — Fale com a Ferpec</span><h2>Precisa de ajuda<br /><em>para escolher?</em></h2><p>Nossa equipe orienta você sobre os produtos disponíveis e os canais oficiais de compra.</p><a className="button button-whatsapp contact-button" href={links.whatsapp} target="_blank" rel="noreferrer"><FaWhatsapp size={21} /> Chamar no WhatsApp <ArrowRight size={18} /></a></Reveal>
-          <Reveal className="contact-card" delay={140}><span className="contact-card-label">CANAIS DE ATENDIMENTO</span><a href="tel:+5519983524481"><Phone /><span><small>Telefone / WhatsApp</small><strong>(19) 9 8352-4481</strong></span><ArrowRight className="contact-arrow" /></a><a href="mailto:ferpec@ferpec.com.br"><Mail /><span><small>E-mail</small><strong>ferpec@ferpec.com.br</strong></span><ArrowRight className="contact-arrow" /></a><a href="https://www.google.com/maps/search/?api=1&query=Rua+Monte+Libano+210+Jardim+Alfa+Santa+Barbara+d%27Oeste+SP" target="_blank" rel="noreferrer"><MapPin /><span><small>Endereço</small><strong>Rua Monte Líbano, 210<br />Jardim Alfa — Santa Bárbara d’Oeste/SP</strong></span><ArrowRight className="contact-arrow" /></a><div className="contact-cep">CEP 13450-605</div></Reveal>
+          <Reveal className="contact-card" delay={140}><span className="contact-card-label">CANAIS DE ATENDIMENTO</span><a href="tel:+5519983524481"><Phone /><span><small>Telefone / WhatsApp</small><strong>(19) 9 8352-4481</strong></span><ArrowRight className="contact-arrow" /></a><a href={links.gmail} target="_blank" rel="noreferrer"><Mail /><span><small>E-mail</small><strong>ferpec@ferpec.com.br</strong></span><ArrowRight className="contact-arrow" /></a><a href="https://www.google.com/maps/search/?api=1&query=Rua+Monte+Libano+210+Jardim+Alfa+Santa+Barbara+d%27Oeste+SP" target="_blank" rel="noreferrer"><MapPin /><span><small>Endereço</small><strong>Rua Monte Líbano, 210<br />Jardim Alfa — Santa Bárbara d’Oeste/SP</strong></span><ArrowRight className="contact-arrow" /></a><div className="contact-cep">CEP 13450-605</div></Reveal>
         </div>
       </section>
 
       <footer className="site-footer">
         <div className="container footer-main">
-          <div className="footer-brand"><BrandLogo /><p>E-commerce de ferramentas, equipamentos e soluções de pesagem de marcas confiáveis.</p><div className="footer-socials"><a className="instagram" href={links.instagram} target="_blank" rel="noreferrer" aria-label="Instagram"><FaInstagram /></a><a className="facebook" href={links.facebook} target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a><a className="whatsapp" href={links.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a></div></div>
+          <div className="footer-brand"><BrandLogo /><p>E-commerce de ferramentas, balanças e equipamentos antropométricos de marcas confiáveis.</p><div className="footer-socials"><a className="instagram" href={links.instagram} target="_blank" rel="noreferrer" aria-label="Instagram"><FaInstagram /></a><a className="facebook" href={links.facebook} target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a><a className="whatsapp" href={links.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a></div></div>
           <div className="footer-nav"><span>NAVEGAÇÃO</span><a href="#sobre">Sobre a Ferpec</a><a href="#categorias">Categorias</a><a href="#fornecedores">Marcas</a><a href="#contato">Contato</a></div>
           <div className="footer-nav"><span>COMPRE ONLINE</span><a href={links.mercadoLivre} target="_blank" rel="noreferrer">Mercado Livre</a><a href={links.magalu} target="_blank" rel="noreferrer">Magazine Luiza</a><a href={links.whatsapp} target="_blank" rel="noreferrer">Atendimento via WhatsApp</a></div>
-          <div className="footer-contact"><span>CONTATO</span><a href="tel:+5519983524481">(19) 9 8352-4481</a><a href="mailto:ferpec@ferpec.com.br">ferpec@ferpec.com.br</a><p>Santa Bárbara d’Oeste — SP</p></div>
+          <div className="footer-contact"><span>CONTATO</span><a href="tel:+5519983524481">(19) 9 8352-4481</a><a href={links.gmail} target="_blank" rel="noreferrer">ferpec@ferpec.com.br</a><p>Santa Bárbara d’Oeste — SP</p></div>
         </div>
-        <div className="container footer-bottom"><span>© {new Date().getFullYear()} Ferpec Commerce. Todos os direitos reservados.</span><a href="#inicio">Voltar ao topo <ArrowDown size={15} /></a></div>
+        <div className="container footer-bottom">
+          <div className="footer-legal"><span>© {new Date().getFullYear()} Ferpec Commerce. Todos os direitos reservados.</span><span>Desenvolvido por Octavio Augusto (<a className="footer-developer" href="https://github.com/Octavio345" target="_blank" rel="noreferrer">GitHub: Octavio345</a>)</span></div>
+          <a className="footer-top" href="#inicio">Voltar ao topo <ArrowDown size={15} /></a>
+        </div>
       </footer>
 
-      <a className="whatsapp-float" href={links.whatsapp} target="_blank" rel="noreferrer" aria-label="Falar com a Ferpec pelo WhatsApp"><span>Fale com a Ferpec</span><FaWhatsapp /></a>
+      <a className="whatsapp-float" href={links.whatsapp} target="_blank" rel="noreferrer" aria-label="Falar com a Ferpec pelo WhatsApp" title="WhatsApp Ferpec"><FaWhatsapp /></a>
     </main>
   );
 }

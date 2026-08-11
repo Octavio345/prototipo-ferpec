@@ -3,25 +3,31 @@ import { headers } from "next/headers";
 import "./globals.css";
 
 const baseMetadata: Metadata = {
-  title: "Ferpec Commerce | Ferramentas, jardinagem e balanças",
+  title: "Ferpec Commerce | Ferramentas, jardinagem e antropometria",
   description:
-    "Ferramentas para motocicletas, jardinagem e uso geral, além de balanças profissionais. Conheça a Ferpec Commerce e compre pelos canais oficiais.",
+    "Ferramentas para motocicletas, jardinagem e uso geral, além de balanças e equipamentos antropométricos. Conheça a Ferpec Commerce e compre pelos canais oficiais, com envio para todo o Brasil.",
   keywords: [
     "Ferpec Commerce",
     "ferramentas",
     "ferramentas para motocicletas",
     "jardinagem",
     "balanças",
+    "equipamentos antropométricos",
     "Santa Bárbara d'Oeste",
   ],
   icons: {
-    icon: "/brand/ferpec.jpeg",
-    shortcut: "/brand/ferpec.jpeg",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     title: "Ferpec Commerce | Soluções para quem faz acontecer",
     description:
-      "Ferramentas, equipamentos e precisão para oficinas, jardins, empresas e projetos.",
+      "Ferramentas, balanças e equipamentos antropométricos, com envio para todo o Brasil.",
     type: "website",
     locale: "pt_BR",
   },
@@ -43,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: "Ferpec Commerce | Soluções para quem faz acontecer",
-      description: "Ferramentas, equipamentos e precisão para oficinas, jardins, empresas e projetos.",
+      description: "Ferramentas, balanças e equipamentos antropométricos, com envio para todo o Brasil.",
       images: [socialImage],
     },
   };
