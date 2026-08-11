@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/.npm-cache/
+/.openai/
 /.pnp
 .pnp.*
 .yarn/*
@@ -25,7 +27,6 @@
 # debug
 npm-debug.log*
 dev-server*.log
-.npm-cache/
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
@@ -43,4 +44,3 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
-/tmp/
