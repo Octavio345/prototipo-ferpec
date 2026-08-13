@@ -15,7 +15,6 @@ import {
   Phone,
   Scale,
   ShieldCheck,
-  ShoppingBag,
   Sparkles,
   Sprout,
   Wrench,
@@ -31,6 +30,10 @@ const gmailSubject = encodeURIComponent("Contato pelo site da Ferpec Commerce");
 const gmailBody = encodeURIComponent(
   "Olá, equipe Ferpec Commerce! Vim pelo site e gostaria de mais informações.",
 );
+const supplierSubject = encodeURIComponent("Proposta comercial para a Ferpec Commerce");
+const supplierBody = encodeURIComponent(
+  "Olá, equipe Ferpec Commerce! Gostaria de apresentar nossa empresa e avaliar uma possível parceria comercial.",
+);
 
 const links = {
   whatsapp: `https://wa.me/5519983524481?text=${whatsappMessage}`,
@@ -39,6 +42,7 @@ const links = {
   magalu: "https://www.magazineluiza.com.br/lojista/ferpeccommerce/",
   mercadoLivre: "https://www.mercadolivre.com.br/pagina/ferpecferramentas",
   gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=ferpec%40ferpec.com.br&su=${gmailSubject}&body=${gmailBody}`,
+  supplierGmail: `https://mail.google.com/mail/?view=cm&fs=1&to=ferpec%40ferpec.com.br&su=${supplierSubject}&body=${supplierBody}`,
 };
 
 const categories = [
@@ -46,6 +50,7 @@ const categories = [
     number: "01",
     icon: Bike,
     image: "/media/category-moto.jpg",
+    href: "https://lista.mercadolivre.com.br/pagina/ferpecferramentas/lista/acessorios-veiculos/",
     title: "Motocicletas",
     text: "Ferramentas para manutenção de motocicletas, selecionadas para oficinas e profissionais que buscam eficiência.",
     tags: ["Oficina", "Manutenção", "Performance"],
@@ -54,6 +59,7 @@ const categories = [
     number: "02",
     icon: Sprout,
     image: "/media/category-garden.jpg",
+    href: "https://lista.mercadolivre.com.br/pagina/ferpecferramentas/lista/casa-moveis-decoracao/",
     title: "Jardinagem",
     text: "Ferramentas e suportes para vasos que unem praticidade, organização e cuidado em jardins e áreas externas.",
     tags: ["Ferramentas", "Suportes para vasos", "Jardim"],
@@ -62,14 +68,16 @@ const categories = [
     number: "03",
     icon: Wrench,
     image: "/media/category-tools.jpg",
-    title: "Uso geral",
-    text: "Ferramentas confiáveis para profissionais, empresas e para quem valoriza qualidade em cada projeto.",
-    tags: ["Profissional", "Multiuso", "Durabilidade"],
+    href: "https://lista.mercadolivre.com.br/pagina/ferpecferramentas/lista/ferramentas/",
+    title: "Ferramentas e equipamentos",
+    text: "Ferramentas manuais, acessórios e equipamentos para uso profissional e cotidiano.",
+    tags: ["Ferramentas", "Acessórios", "Equipamentos"],
   },
   {
     number: "04",
     icon: Scale,
     image: "/media/category-anthropometric.webp",
+    href: "https://lista.mercadolivre.com.br/pagina/ferpecferramentas/lista/saude/",
     title: "Balanças e equipamentos antropométricos",
     text: "Soluções para pesagem e avaliação antropométrica, com equipamentos selecionados para medições precisas.",
     tags: ["Pesagem", "Antropometria", "Precisão"],
@@ -174,19 +182,20 @@ export default function Home() {
         <div className="hero-shade" aria-hidden="true" />
         <div className="container hero-layout">
           <div className="hero-copy">
-            <div className="eyebrow hero-eyebrow"><span className="eyebrow-dot" /> E-commerce especializado em ferramentas</div>
-            <h1>As ferramentas certas, <span>a um clique de você.</span></h1>
+            <div className="eyebrow hero-eyebrow"><span className="eyebrow-dot" /> Revenda multimarcas • Comércio eletrônico</div>
+            <h1>Produtos e equipamentos <span>para diferentes necessidades.</span></h1>
             <p>
-              A Ferpec Commerce seleciona e vende online ferramentas para motocicletas, jardinagem, uso geral, balanças e equipamentos antropométricos de marcas confiáveis.
+              Ferramentas, equipamentos e soluções de marcas reconhecidas para profissionais, empresas e consumidores em todo o Brasil.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#onde-comprar">Comprar online <ShoppingBag size={18} /></a>
-              <a className="button button-ghost" href="#categorias">Ver categorias <ArrowDown size={17} /></a>
+              <a className="button button-primary" href="#categorias">Ver categorias <ChevronRight size={18} /></a>
+              <a className="button button-ghost" href="#onde-comprar">Onde comprar <ArrowDown size={17} /></a>
             </div>
+            <p className="hero-expansion">Portfólio em constante expansão.</p>
             <div className="hero-proof">
-              <span><Check size={15} /> Venda 100% online</span>
-              <span><Check size={15} /> Marcas reconhecidas</span>
-              <span><Check size={15} /> Atendimento humano</span>
+              <span><Check size={15} /> Revenda multimarcas</span>
+              <span><Check size={15} /> Principais marketplaces</span>
+              <span><Check size={15} /> Atendimento em todo o Brasil</span>
             </div>
           </div>
         </div>
@@ -214,25 +223,25 @@ export default function Home() {
         <div className="container about-grid">
           <Reveal className="about-heading">
             <span className="section-kicker">01 — Quem somos</span>
-            <h2>Escolha especializada.<br /><em>Compra simples e segura.</em></h2>
+            <h2>Revenda multimarcas.<br /><em>Presença digital.</em></h2>
           </Reveal>
           <Reveal className="about-content" delay={120}>
-            <p className="about-lead">A <strong>Ferpec Commerce</strong> é uma operação de e-commerce que conecta pessoas e empresas a ferramentas e equipamentos de marcas reconhecidas.</p>
-            <p>Não fabricamos nem executamos serviços: selecionamos, comercializamos e orientamos a compra dos produtos certos. Tudo acontece online, pelos nossos canais oficiais e marketplaces parceiros.</p>
-            <div className="about-signature"><div className="signature-icon"><Sparkles size={21} /></div><span><strong>Variedade com critério.</strong>Para você comprar melhor, sem complicação.</span></div>
+            <p className="about-lead">A <strong>Ferpec Commerce</strong> é uma revenda multimarcas com atuação nos principais canais de comércio eletrônico do Brasil.</p>
+            <p>Selecionamos e comercializamos produtos e equipamentos de marcas reconhecidas, com atuação em diferentes categorias e canais de venda online.</p>
+            <div className="about-signature"><div className="signature-icon"><Sparkles size={21} /></div><span><strong>Marcas, canais e consumidores conectados.</strong>Uma operação preparada para ampliar categorias e parcerias.</span></div>
           </Reveal>
         </div>
         <div className="container about-panels">
-          <Reveal className="about-panel about-panel-dark" delay={80}><span className="panel-index">CURADORIA</span><h3>Produtos escolhidos para necessidades reais.</h3><p>Linhas úteis, marcas reconhecidas e variedade estratégica.</p><div className="panel-graphic"><ShieldCheck /></div></Reveal>
-          <Reveal className="about-panel about-panel-yellow" delay={160}><span className="panel-index">ATENDIMENTO</span><h3>Orientação humana para comprar com confiança.</h3><p>Informação clara antes, durante e depois da escolha.</p><div className="panel-graphic"><FaWhatsapp /></div></Reveal>
-          <Reveal className="about-panel about-panel-light" delay={240}><span className="panel-index">PRATICIDADE</span><h3>Escolha online. Receba onde estiver.</h3><p>Compre nos marketplaces que você já conhece e confia.</p><div className="panel-graphic"><Zap /></div></Reveal>
+          <Reveal className="about-panel about-panel-dark" delay={80}><span className="panel-index">PORTFÓLIO</span><h3>Seleção multimarcas com espaço para crescer.</h3><p>Produtos e categorias avaliados com critério comercial.</p><div className="panel-graphic"><ShieldCheck /></div></Reveal>
+          <Reveal className="about-panel about-panel-yellow" delay={160}><span className="panel-index">CANAIS</span><h3>Presença nos principais marketplaces.</h3><p>Alcance nacional por canais de compra consolidados.</p><div className="panel-graphic"><Zap /></div></Reveal>
+          <Reveal className="about-panel about-panel-light" delay={240}><span className="panel-index">PARCERIAS</span><h3>Relações comerciais de longo prazo.</h3><p>Conexão entre marcas, produtos e consumidores.</p><div className="panel-graphic"><Sparkles /></div></Reveal>
         </div>
       </section>
 
       <section id="categorias" className="categories section-pad">
         <div className="container section-head">
           <Reveal><span className="section-kicker section-kicker-light">02 — Nossas categorias</span><h2>Soluções certas para<br /><em>cada tipo de desafio.</em></h2></Reveal>
-          <Reveal delay={100}><p>Da oficina ao jardim, da rotina profissional à medição precisa. Explore as principais linhas disponíveis em nossa loja online.</p></Reveal>
+          <Reveal delay={100}><p>Conheça as categorias que fazem parte do portfólio atual da Ferpec Commerce.</p></Reveal>
         </div>
         <div className="container category-grid">
           {categories.map((category, index) => {
@@ -241,7 +250,7 @@ export default function Home() {
               <Reveal key={category.title} className={`category-card ${category.number === "04" ? "category-scale-card" : ""}`} delay={index * 80}>
                 <div className="category-photo"><img src={category.image} alt={category.number === "04" ? "Balança antropométrica com estadiômetro" : `Produtos para ${category.title.toLowerCase()}`} loading="lazy" /><div className="category-top"><span>{category.number}</span><Icon /></div></div>
                 <div className="category-copy"><h3>{category.title}</h3><p>{category.text}</p><div className="category-tags">{category.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
-                <a href={links.whatsapp} target="_blank" rel="noreferrer" aria-label={`Consultar produtos de ${category.title}`}>Consultar produtos <ChevronRight size={18} /></a>
+                <a href={category.href} target="_blank" rel="noreferrer" aria-label={`Ver produtos de ${category.title} na loja oficial da Ferpec`}>Ver produtos <ChevronRight size={18} /></a>
               </Reveal>
             );
           })}
@@ -259,10 +268,14 @@ export default function Home() {
       </section>
 
       <section id="fornecedores" className="suppliers section-pad">
-        <div className="container suppliers-head"><Reveal><span className="section-kicker">04 — Marcas parceiras</span><h2>Grandes marcas.<br /><em>Escolhas de confiança.</em></h2></Reveal><Reveal delay={100}><p>As marcas aparecem em suas cores reais, porque cada identidade faz parte da qualidade e da credibilidade da nossa seleção.</p></Reveal></div>
+        <div className="container suppliers-head"><Reveal><span className="section-kicker">04 — Marcas parceiras</span><h2>Grandes marcas.<br /><em>Escolhas de confiança.</em></h2></Reveal><Reveal delay={100}><p>Um portfólio multimarcas construído com fornecedores de diferentes segmentos.</p></Reveal></div>
         <div className="container supplier-grid">
           {suppliers.map((supplier, index) => <Reveal key={supplier.name} className="supplier-card" delay={(index % 4) * 60}><span>{String(index + 1).padStart(2, "0")}</span><img src={supplier.src} alt={`Logo ${supplier.name}`} loading="lazy" /><small>{supplier.name}</small></Reveal>)}
         </div>
+        <Reveal className="container supplier-partner" delay={120}>
+          <div><span className="section-kicker">NOVAS PARCERIAS</span><h3>Quer sua marca no portfólio Ferpec?</h3></div>
+          <div className="supplier-partner-copy"><p>A Ferpec trabalha com revenda multimarcas e está constantemente avaliando novos produtos, fornecedores e categorias.</p><p>Atuamos nos principais canais de comércio eletrônico do Brasil e buscamos parcerias comerciais de longo prazo com fabricantes, importadores e distribuidores.</p><a className="button button-partner" href={links.supplierGmail} target="_blank" rel="noreferrer">Quero fornecer para a Ferpec <ArrowRight size={18} /></a></div>
+        </Reveal>
       </section>
 
       <section className="social-section section-pad">
@@ -285,7 +298,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="container footer-main">
-          <div className="footer-brand"><BrandLogo /><p>E-commerce de ferramentas, balanças e equipamentos antropométricos de marcas confiáveis.</p><div className="footer-socials"><a className="instagram" href={links.instagram} target="_blank" rel="noreferrer" aria-label="Instagram"><FaInstagram /></a><a className="facebook" href={links.facebook} target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a><a className="whatsapp" href={links.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a></div></div>
+          <div className="footer-brand"><BrandLogo /><p>Revenda multimarcas com atuação nos principais canais de comércio eletrônico do Brasil.</p><div className="footer-socials"><a className="instagram" href={links.instagram} target="_blank" rel="noreferrer" aria-label="Instagram"><FaInstagram /></a><a className="facebook" href={links.facebook} target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a><a className="whatsapp" href={links.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a></div></div>
           <div className="footer-nav"><span>NAVEGAÇÃO</span><a href="#sobre">Sobre a Ferpec</a><a href="#categorias">Categorias</a><a href="#fornecedores">Marcas</a><a href="#contato">Contato</a></div>
           <div className="footer-nav"><span>COMPRE ONLINE</span><a href={links.mercadoLivre} target="_blank" rel="noreferrer">Mercado Livre</a><a href={links.magalu} target="_blank" rel="noreferrer">Magazine Luiza</a><a href={links.whatsapp} target="_blank" rel="noreferrer">Atendimento via WhatsApp</a></div>
           <div className="footer-contact"><span>CONTATO</span><a href="tel:+5519983524481">(19) 9 8352-4481</a><a href={links.gmail} target="_blank" rel="noreferrer">ferpec@ferpec.com.br</a><p>Santa Bárbara d’Oeste — SP</p></div>

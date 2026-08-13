@@ -3,11 +3,13 @@ import { headers } from "next/headers";
 import "./globals.css";
 
 const baseMetadata: Metadata = {
-  title: "Ferpec Commerce | Ferramentas, jardinagem e antropometria",
+  title: "Ferpec Commerce | Revenda multimarcas online",
   description:
-    "Ferramentas para motocicletas, jardinagem e uso geral, além de balanças e equipamentos antropométricos. Conheça a Ferpec Commerce e compre pelos canais oficiais, com envio para todo o Brasil.",
+    "Revenda multimarcas com atuação nos principais canais de comércio eletrônico do Brasil. Produtos e equipamentos para profissionais, empresas e consumidores.",
   keywords: [
     "Ferpec Commerce",
+    "revenda multimarcas",
+    "comércio eletrônico",
     "ferramentas",
     "ferramentas para motocicletas",
     "jardinagem",
@@ -25,9 +27,9 @@ const baseMetadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
-    title: "Ferpec Commerce | Soluções para quem faz acontecer",
+    title: "Ferpec Commerce | Revenda multimarcas online",
     description:
-      "Ferramentas, balanças e equipamentos antropométricos, com envio para todo o Brasil.",
+      "Produtos e equipamentos de marcas reconhecidas, com atuação nos principais canais de comércio eletrônico do Brasil.",
     type: "website",
     locale: "pt_BR",
   },
@@ -48,8 +50,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Ferpec Commerce | Soluções para quem faz acontecer",
-      description: "Ferramentas, balanças e equipamentos antropométricos, com envio para todo o Brasil.",
+      title: "Ferpec Commerce | Revenda multimarcas online",
+      description: "Produtos e equipamentos de marcas reconhecidas, com atuação nos principais canais de comércio eletrônico do Brasil.",
       images: [socialImage],
     },
   };
