@@ -159,16 +159,21 @@ h2 em { color: #9c9b95; font-style: normal; font-weight: 400; }
 .market-checks span { display: flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 750; }
 .market-checks svg { width: 20px; height: 20px; padding: 4px; border-radius: 50%; background: rgba(0,0,0,.12); }
 .market-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-.market-card { min-height: 445px; padding: 30px; display: flex; flex-direction: column; border-radius: 9px; box-shadow: 0 25px 70px rgba(0,0,0,.15); }
+.market-card { position: relative; min-height: 445px; padding: 30px; display: flex; flex-direction: column; border-radius: 9px; box-shadow: 0 25px 70px rgba(0,0,0,.15); cursor: pointer; transform-origin: center bottom; transition: transform .38s cubic-bezier(.2,.75,.2,1), box-shadow .38s ease; }
+.market-card:hover { transform: translateY(-9px) scale(1.012); box-shadow: 0 38px 82px rgba(0,0,0,.24); }
+.market-card:focus-within { box-shadow: 0 0 0 4px rgba(0,0,0,.18), 0 25px 70px rgba(0,0,0,.15); }
 .market-ml { color: #171717; background: #ffe600; }
 .market-magalu { color: #171717; background: #fff; }
 .market-logo { height: 98px; display: flex; align-items: flex-start; }
-.market-logo img { width: 100%; max-width: 215px; height: 78px; object-fit: contain; object-position: left center; }
+.market-logo img { width: 100%; max-width: 215px; height: 78px; object-fit: contain; object-position: left center; transition: transform .38s cubic-bezier(.2,.75,.2,1); }
+.market-card:hover .market-logo img { transform: translateY(-3px) scale(1.025); }
 .market-magalu .market-logo img { max-width: 205px; }
 .market-overline { margin-top: auto; margin-bottom: 12px; color: rgba(0,0,0,.48); font-size: 8px; font-weight: 850; letter-spacing: .15em; }
 .market-card h3 { margin: 0 0 13px; font-size: 26px; line-height: 1.08; letter-spacing: -.04em; }
 .market-card p { min-height: 58px; margin: 0; color: #626262; font-size: 11px; line-height: 1.65; }
 .market-card a { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,.18); font-size: 11px; font-weight: 850; }
+.market-card a::after { content: ""; position: absolute; z-index: 3; inset: 0; border-radius: inherit; }
+.market-card a:focus-visible { outline: none; }
 .market-card a svg { transition: transform .2s; }
 .market-card a:hover svg { transform: translateX(5px); }
 
