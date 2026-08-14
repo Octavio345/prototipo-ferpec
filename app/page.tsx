@@ -220,7 +220,6 @@ export default function Home() {
       <section id="categorias" className="categories section-pad">
         <div className="container section-head">
           <Reveal><span className="section-kicker section-kicker-light">02 — Nossas categorias</span><h2>Soluções certas para<br /><em>cada tipo de desafio.</em></h2></Reveal>
-          <Reveal delay={100}><p>Portfólio atual, em constante evolução.</p></Reveal>
         </div>
         <div className="container category-grid">
           {categories.map((category, index) => {
