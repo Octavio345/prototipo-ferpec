@@ -7,11 +7,9 @@ import {
   Bike,
   Check,
   ChevronRight,
-  Gauge,
   Mail,
   MapPin,
   Menu,
-  PackageCheck,
   Phone,
   Scale,
   ShieldCheck,
@@ -53,7 +51,6 @@ const categories = [
     href: "https://lista.mercadolivre.com.br/pagina/ferpecferramentas/lista/acessorios-veiculos/",
     title: "Motocicletas",
     text: "Ferramentas para manutenção de motocicletas, selecionadas para oficinas e profissionais que buscam eficiência.",
-    tags: ["Oficina", "Manutenção", "Performance"],
   },
   {
     number: "02",
@@ -62,7 +59,6 @@ const categories = [
     href: "https://lista.mercadolivre.com.br/pagina/ferpecferramentas/lista/casa-moveis-decoracao/",
     title: "Jardinagem",
     text: "Ferramentas e suportes para vasos que unem praticidade, organização e cuidado em jardins e áreas externas.",
-    tags: ["Ferramentas", "Suportes para vasos", "Jardim"],
   },
   {
     number: "03",
@@ -71,7 +67,6 @@ const categories = [
     href: "https://lista.mercadolivre.com.br/pagina/ferpecferramentas/lista/ferramentas/",
     title: "Ferramentas e equipamentos",
     text: "Ferramentas manuais, acessórios e equipamentos para uso profissional e cotidiano.",
-    tags: ["Ferramentas", "Acessórios", "Equipamentos"],
   },
   {
     number: "04",
@@ -80,19 +75,18 @@ const categories = [
     href: "https://lista.mercadolivre.com.br/pagina/ferpecferramentas/lista/saude/",
     title: "Balanças e equipamentos antropométricos",
     text: "Soluções para pesagem e avaliação antropométrica, com equipamentos selecionados para medições precisas.",
-    tags: ["Pesagem", "Antropometria", "Precisão"],
   },
 ];
 
 const suppliers = [
-  { src: "/brand/galmar.png", name: "Galmar" },
-  { src: "/brand/lupus-transparent.png", name: "Lupus" },
-  { src: "/brand/bremen-transparent-v2.png", name: "Bremen" },
-  { src: "/brand/digimess-transparent.png", name: "Digimess" },
-  { src: "/brand/balmak-transparent.png", name: "Balmak" },
-  { src: "/brand/tramontina.svg", name: "Tramontina" },
-  { src: "/brand/kingtools-transparent.png", name: "Kingtools" },
-  { src: "/brand/vilubri-transparent.png", name: "Vilubri" },
+  { src: "/brand/galmar.png", name: "Galmar", slug: "galmar" },
+  { src: "/brand/lupus-display.png", name: "Lupus", slug: "lupus" },
+  { src: "/brand/bremen-display.png", name: "Bremen", slug: "bremen" },
+  { src: "/brand/digimess-mark.png", name: "Digimess", slug: "digimess", tagline: "Instrumentos de precisão" },
+  { src: "/brand/balmak-mark.png", name: "Balmak", slug: "balmak", tagline: "Evolução. Revolução." },
+  { src: "/brand/tramontina.svg", name: "Tramontina", slug: "tramontina" },
+  { src: "/brand/kingtools-display.png", name: "Kingtools", slug: "kingtools" },
+  { src: "/brand/vilubri-display.png", name: "Vilubri", slug: "vilubri" },
 ];
 
 function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
@@ -192,11 +186,6 @@ export default function Home() {
               <a className="button button-ghost" href="#onde-comprar">Onde comprar <ArrowDown size={17} /></a>
             </div>
             <p className="hero-expansion">Portfólio em constante expansão.</p>
-            <div className="hero-proof">
-              <span><Check size={15} /> Revenda multimarcas</span>
-              <span><Check size={15} /> Principais marketplaces</span>
-              <span><Check size={15} /> Atendimento em todo o Brasil</span>
-            </div>
           </div>
         </div>
         <div className="hero-bottom">
@@ -210,15 +199,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="value-strip" aria-label="Diferenciais Ferpec">
-        <div className="container value-grid">
-          <div><ShieldCheck /><span><strong>Marcas confiáveis</strong>Curadoria de fornecedores</span></div>
-          <div><PackageCheck /><span><strong>Enviamos para todo o Brasil</strong>Compre pelos canais oficiais</span></div>
-          <div><FaWhatsapp /><span><strong>Atendimento próximo</strong>Fale direto com a equipe</span></div>
-          <div><Gauge /><span><strong>Soluções profissionais</strong>Para diferentes rotinas</span></div>
-        </div>
-      </section>
-
       <section id="sobre" className="about section-pad">
         <div className="container about-grid">
           <Reveal className="about-heading">
@@ -228,20 +208,19 @@ export default function Home() {
           <Reveal className="about-content" delay={120}>
             <p className="about-lead">A <strong>Ferpec Commerce</strong> é uma revenda multimarcas com atuação nos principais canais de comércio eletrônico do Brasil.</p>
             <p>Selecionamos e comercializamos produtos e equipamentos de marcas reconhecidas, com atuação em diferentes categorias e canais de venda online.</p>
-            <div className="about-signature"><div className="signature-icon"><Sparkles size={21} /></div><span><strong>Marcas, canais e consumidores conectados.</strong>Uma operação preparada para ampliar categorias e parcerias.</span></div>
           </Reveal>
         </div>
         <div className="container about-panels">
-          <Reveal className="about-panel about-panel-dark" delay={80}><span className="panel-index">PORTFÓLIO</span><h3>Seleção multimarcas com espaço para crescer.</h3><p>Produtos e categorias avaliados com critério comercial.</p><div className="panel-graphic"><ShieldCheck /></div></Reveal>
-          <Reveal className="about-panel about-panel-yellow" delay={160}><span className="panel-index">CANAIS</span><h3>Presença nos principais marketplaces.</h3><p>Alcance nacional por canais de compra consolidados.</p><div className="panel-graphic"><Zap /></div></Reveal>
-          <Reveal className="about-panel about-panel-light" delay={240}><span className="panel-index">PARCERIAS</span><h3>Relações comerciais de longo prazo.</h3><p>Conexão entre marcas, produtos e consumidores.</p><div className="panel-graphic"><Sparkles /></div></Reveal>
+          <Reveal className="about-panel about-panel-dark" delay={80}><span className="panel-index">PORTFÓLIO</span><h3>Seleção multimarcas com espaço para crescer.</h3><div className="panel-graphic"><ShieldCheck /></div></Reveal>
+          <Reveal className="about-panel about-panel-yellow" delay={160}><span className="panel-index">CANAIS</span><h3>Presença nos principais marketplaces.</h3><div className="panel-graphic"><Zap /></div></Reveal>
+          <Reveal className="about-panel about-panel-light" delay={240}><span className="panel-index">PARCERIAS</span><h3>Relações comerciais de longo prazo.</h3><div className="panel-graphic"><Sparkles /></div></Reveal>
         </div>
       </section>
 
       <section id="categorias" className="categories section-pad">
         <div className="container section-head">
           <Reveal><span className="section-kicker section-kicker-light">02 — Nossas categorias</span><h2>Soluções certas para<br /><em>cada tipo de desafio.</em></h2></Reveal>
-          <Reveal delay={100}><p>Conheça as categorias que fazem parte do portfólio atual da Ferpec Commerce.</p></Reveal>
+          <Reveal delay={100}><p>Portfólio atual, em constante evolução.</p></Reveal>
         </div>
         <div className="container category-grid">
           {categories.map((category, index) => {
@@ -249,7 +228,7 @@ export default function Home() {
             return (
               <Reveal key={category.title} className={`category-card ${category.number === "04" ? "category-scale-card" : ""}`} delay={index * 80}>
                 <div className="category-photo"><img src={category.image} alt={category.number === "04" ? "Balança antropométrica com estadiômetro" : `Produtos para ${category.title.toLowerCase()}`} loading="lazy" /><div className="category-top"><span>{category.number}</span><Icon /></div></div>
-                <div className="category-copy"><h3>{category.title}</h3><p>{category.text}</p><div className="category-tags">{category.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
+                <div className="category-copy"><h3>{category.title}</h3><p>{category.text}</p></div>
                 <a href={category.href} target="_blank" rel="noreferrer" aria-label={`Ver produtos de ${category.title} na loja oficial da Ferpec`}>Ver produtos <ChevronRight size={18} /></a>
               </Reveal>
             );
@@ -261,8 +240,8 @@ export default function Home() {
         <div className="container market-layout">
           <Reveal className="market-copy"><span className="section-kicker">03 — Onde comprar</span><h2>Canais oficiais.<br /><em>Compra com confiança.</em></h2><p>Encontre os produtos Ferpec nos principais marketplaces, com pagamento protegido. Enviamos para todo o Brasil.</p><div className="market-checks"><span><Check size={16} /> Pagamento seguro</span><span><Check size={16} /> Enviamos para todo o Brasil</span><span><Check size={16} /> Canais oficiais Ferpec</span></div></Reveal>
           <div className="market-cards">
-            <Reveal className="market-card market-ml" delay={100}><div className="market-logo"><img src="/logos/mercado-livre.svg" alt="Mercado Livre" /></div><span className="market-overline">COMPRE NO MERCADO LIVRE</span><h3>Agilidade para escolher e receber.</h3><p>Acesse o catálogo Ferpec disponível na plataforma.</p><a href={links.mercadoLivre} target="_blank" rel="noreferrer">Visitar loja <ArrowRight size={17} /></a></Reveal>
-            <Reveal className="market-card market-magalu" delay={180}><div className="market-logo"><img src="/logos/magalu.svg" alt="Magalu" /></div><span className="market-overline">COMPRE NO MAGALU</span><h3>Praticidade em uma plataforma conhecida.</h3><p>Confira a seleção Ferpec disponível no Magazine Luiza.</p><a href={links.magalu} target="_blank" rel="noreferrer">Visitar loja <ArrowRight size={17} /></a></Reveal>
+            <Reveal className="market-card market-ml" delay={100}><div className="market-logo"><img src="/logos/mercado-livre.svg" alt="Mercado Livre" /></div><span className="market-overline">LOJA OFICIAL</span><p>Confira os produtos Ferpec disponíveis no Mercado Livre.</p><a href={links.mercadoLivre} target="_blank" rel="noreferrer">Visitar loja <ArrowRight size={17} /></a></Reveal>
+            <Reveal className="market-card market-magalu" delay={180}><div className="market-logo"><img src="/logos/magalu.svg" alt="Magalu" /></div><span className="market-overline">LOJA OFICIAL</span><p>Confira os produtos Ferpec disponíveis no Magazine Luiza.</p><a href={links.magalu} target="_blank" rel="noreferrer">Visitar loja <ArrowRight size={17} /></a></Reveal>
           </div>
         </div>
       </section>
@@ -270,7 +249,7 @@ export default function Home() {
       <section id="fornecedores" className="suppliers section-pad">
         <div className="container suppliers-head"><Reveal><span className="section-kicker">04 — Marcas parceiras</span><h2>Grandes marcas.<br /><em>Escolhas de confiança.</em></h2></Reveal><Reveal delay={100}><p>Um portfólio multimarcas construído com fornecedores de diferentes segmentos.</p></Reveal></div>
         <div className="container supplier-grid">
-          {suppliers.map((supplier, index) => <Reveal key={supplier.name} className="supplier-card" delay={(index % 4) * 60}><span>{String(index + 1).padStart(2, "0")}</span><img src={supplier.src} alt={`Logo ${supplier.name}`} loading="lazy" /><small>{supplier.name}</small></Reveal>)}
+          {suppliers.map((supplier, index) => <Reveal key={supplier.name} className={`supplier-card supplier-card-${supplier.slug}`} delay={(index % 4) * 60}><span>{String(index + 1).padStart(2, "0")}</span><div className="supplier-logo-lockup"><img src={supplier.src} alt={`Logo ${supplier.name}`} loading="lazy" />{"tagline" in supplier && <strong className="supplier-lockup-tagline">{supplier.tagline}</strong>}</div><small>{supplier.name}</small></Reveal>)}
         </div>
         <Reveal className="container supplier-partner" delay={120}>
           <div><span className="section-kicker">NOVAS PARCERIAS</span><h3>Quer sua marca no portfólio Ferpec?</h3></div>
